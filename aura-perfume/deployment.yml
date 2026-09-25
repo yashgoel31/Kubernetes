@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aura-perfume-deployment
+  namespace: aura-perfume-ns
+  labels:
+    app: aura-perfume
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: aura-perfume
+  template:
+    metadata:
+      name: aura-perfume-pod
+      namespace: aura-perfume-ns
+      labels:
+        app: aura-perfume
+    spec:
+      containers:
+      - name: aura-perfume-container
+        image: yashgoel31/aura-perfume:latest
+        ports:
+        - containerPort: 3000
